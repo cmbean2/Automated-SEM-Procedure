@@ -1002,7 +1002,7 @@ microscope.connect()
 microscope.specimen.stage.set_default_coordinate_system(CoordinateSystem.RAW)
 
 #Turns off the Ion Beam
-if microscope.beams.ion_beam.in_on:
+if microscope.beams.ion_beam.is_on:
     microscope.beams.ion_beam.turn_off()
     print("Ion Beam has been turned off.")
 else:
@@ -1179,7 +1179,7 @@ with tqdm(total=total_images, desc="Capturing Images") as pbar:
     microscope.beams.electron_beam.turn_off()
 
     #Turns off the Ion Beam
-    if microscope.beams.ion_beam.in_on:
+    if microscope.beams.ion_beam.is_on:
         microscope.beams.ion_beam.turn_off()
         print("Ion Beam has been turned off.")
     else:
