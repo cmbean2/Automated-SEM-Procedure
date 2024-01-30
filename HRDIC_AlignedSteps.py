@@ -1001,6 +1001,13 @@ microscope.connect()
 ##Make sure we're working in RAW stage coordinates
 microscope.specimen.stage.set_default_coordinate_system(CoordinateSystem.RAW)
 
+#Turns off the Ion Beam
+if microscope.beams.ion_beam.in_on:
+    microscope.beams.ion_beam.turn_off()
+    print("Ion Beam has been turned off.")
+else:
+    print("Ion Beam was already turned off.")
+
 # Reset beam shift to zero
 microscope.beams.electron_beam.beam_shift.value = Point(0, 0)
 
@@ -1170,4 +1177,11 @@ with tqdm(total=total_images, desc="Capturing Images") as pbar:
 
     microscope.beams.electron_beam.scanning.resolution.value = "1536x1024"
     microscope.beams.electron_beam.turn_off()
+
+    #Turns off the Ion Beam
+    if microscope.beams.ion_beam.in_on:
+        microscope.beams.ion_beam.turn_off()
+        print("Ion Beam has been turned off.")
+    else:
+        print("Ion Beam was already turned off.")
     print('Done!')  
